@@ -6,16 +6,15 @@ RUN apt-get -y update && \
 	apt-get -y upgrade && \
     apt-get -y install gcc make g++
 
-# RUN git clone https://github.com/rrwick/Porechop.git
-# RUN cd Porechop && \
-#     python3 setup.py install
-# 
 RUN git clone https://github.com/artic-network/artic-ncov2019.git
 
 WORKDIR /artic-ncov2019
 
-# RUN pip install git+https://github.com/artic-network/Porechop.git@v0.3.2pre
 RUN conda env create -f environment.yml
 RUN conda env create -f environment-medaka.yml
 RUN mkdir analysis
-RUN source activate artic-ncov2019
+
+RUN echo "source activate artic-ncov2019" > ~/.bashrc
+ENV PATH /opt/conda/envs/artic-ncov2019/bin:$PATH
+
+#ENTRYPOINT [ "/bin/bash" ]
