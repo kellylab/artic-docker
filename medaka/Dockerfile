@@ -5,9 +5,7 @@ LABEL maintainer "Ryan Forster <ryan.forster@einsteinmed.org>"
 
 RUN apt-get -y update && \
 	apt-get -y upgrade && \
-    apt-get -y install gcc make g++ curl
-
-RUN git clone https://github.com/artic-network/artic-ncov2019.git
+    apt-get -y install gcc make g++ curl cmake libhdf5-dev libopenblas-dev
 
 # Install Flappie and runnie, the free versions of Oxford Nanopore's basecallers
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
@@ -15,7 +13,12 @@ RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.d
 RUN git clone https://github.com/nanoporetech/flappie && \
     cd flappie && \
     make flappie && \
-    make runnie
+    make runnie && \
+    cp flappie /bin/flappie && \
+    cp runnie /bin/runnie && \
+    rm -rf /flappie
+
+RUN git clone https://github.com/artic-network/artic-ncov2019.git
 
 WORKDIR /artic-ncov2019
 
