@@ -1,8 +1,8 @@
-# arctic-docker
-Docker Image for Arctic Coronavirus Sequencing Pipeline
+# artic-docker
+Docker Image for Artic Coronavirus Sequencing Pipeline
 
 This contains a Dockerfile along with scripts for running the nCOV2019
-sequencing pipeline developed by Arctic:
+sequencing pipeline developed by Artic:
 https://github.com/artic-network/artic-ncov2019
 
 These tools are used for processing raw read data from an Oxford Nanopore
