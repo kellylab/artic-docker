@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.2-runtime-ubuntu16.04
+FROM  nvidia/cuda:10.2-devel-ubuntu16.04
 
 LABEL maintainer "Saad Khan <skhan8@mail.einstein.yu.edu>"
 LABEL maintainer "Ryan Forster <ryan.forster@einsteinmed.org>"
