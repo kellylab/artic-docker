@@ -1,10 +1,11 @@
-FROM  nvidia/cuda:10.2-devel-ubuntu16.04
+FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu16.04
 
 LABEL maintainer "Saad Khan <skhan8@mail.einstein.yu.edu>"
 LABEL maintainer "Ryan Forster <ryan.forster@einsteinmed.org>"
 
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 ENV PATH /opt/conda/bin:$PATH
+ENV OMPI_MCA_opal_cuda_support=true
 
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 \
     libglib2.0-0 libxext6 libsm6 libxrender1 \
@@ -42,7 +43,7 @@ RUN apt-get -y install wget lsb-release && \
     apt-get update 
 
 RUN apt update && \
-    apt install -y ont-guppy-cpu
+    apt install -y ont-guppy
 
 # Set up Environment
 RUN mkdir analysis
