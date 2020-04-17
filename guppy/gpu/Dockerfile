@@ -1,4 +1,4 @@
-FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04
 
 LABEL maintainer "Saad Khan <skhan8@mail.einstein.yu.edu>"
 LABEL maintainer "Ryan Forster <ryan.forster@einsteinmed.org>"
@@ -42,8 +42,10 @@ RUN apt-get -y install wget lsb-release && \
     /etc/apt/sources.list.d/nanoporetech.sources.list && \
     apt-get update 
 
+# ENV LD_LIBRARY_PATH=/usr/lib/nvidia-384/
 RUN apt update && \
-    apt install -y ont-guppy
+    DEBIAN_FRONTEND=noninteractive \
+    apt install --no-install-recommends -y ont-guppy
 
 # Set up Environment
 RUN mkdir analysis
